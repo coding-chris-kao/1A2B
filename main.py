@@ -1,4 +1,6 @@
 from random import shuffle
+import os
+import sys
 
 
 def get_random_answer() -> list[int]:
@@ -49,6 +51,8 @@ def main():
     while status != correct_status:
         try:
             guess = get_input()
+        except KeyboardInterrupt as e:
+            sys.exit()
         except RuntimeError as e:
             print(e)
             continue
@@ -62,6 +66,8 @@ def main():
 
     print('You win! The answer is ' +
           "".join(list(map(lambda x: str(x), answer))))
+
+    os.system("pause")
 
 
 main()
